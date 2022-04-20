@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-
 class RPG extends StatelessWidget {
   const RPG({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final List<Gam> myProducts = [];
-    myProducts.add(Gam('ELDEN RING','ELDENRING.jpg'));
-    myProducts.add(Gam('Valheim','Valheim.jpeg'));
-    myProducts.add(Gam('Crusader Kings III','CrusaderKingsIII.jpg'));
+    myProducts.add(Gam('ELDEN RING Год выхода: 2022 г.', 'ELDENRING.jpg'));
+    myProducts.add(Gam('Valheim Год выхода: 2021 г.', 'Valheim.jpeg'));
+    myProducts.add(
+        Gam('Crusader Kings III Год выхода: 2020 г.', 'CrusaderKingsIII.jpg'));
     return MaterialApp(
       theme: ThemeData.dark(),
       home: Scaffold(
@@ -18,9 +18,7 @@ class RPG extends StatelessWidget {
         ),
         body: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 1,
-              childAspectRatio: 7 / 5,
-              mainAxisSpacing: 20),
+              crossAxisCount: 1, childAspectRatio: 7 / 5, mainAxisSpacing: 20),
           itemCount: myProducts.length,
           itemBuilder: (BuildContext context, int index) {
             return Card(
@@ -33,18 +31,20 @@ class RPG extends StatelessWidget {
                 // 4
                 child: Column(
                   children: [
-                    Image(image: AssetImage(myProducts[index].ime), fit:BoxFit.fitWidth),
+                    Image(
+                        image: AssetImage(myProducts[index].ime),
+                        fit: BoxFit.fitWidth),
                     Text(
                       myProducts[index].name,
                       style: const TextStyle(
-                        fontSize: 26.0,
+                        color: Colors.black,
+                        fontSize: 35.0,
                         fontWeight: FontWeight.normal,
                       ),
                     )
                   ],
                 ),
               ),
-
             );
           },
         ),
@@ -56,5 +56,6 @@ class RPG extends StatelessWidget {
 class Gam {
   String name;
   String ime;
+
   Gam(this.name, this.ime);
 }

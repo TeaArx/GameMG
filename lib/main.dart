@@ -14,6 +14,7 @@ void main() => runApp(MaterialApp(
 class Gam {
   String name;
   String ime;
+
   Gam(this.name, this.ime);
 }
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  //Дескриптор расположения виджета в дереве виджетов.
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Игры',
@@ -48,31 +50,46 @@ void _menuOpen(BuildContext context) {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Acti();
-                    },
+          SizedBox(
+              width: 300,
+              height: 75,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal,
+                    onPrimary: Colors.white,
+                    onSurface: Colors.grey,
                   ),
-                );
-              },
-              child: Text('Приключенческие боевики')),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) {
+                          return Acti();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text('Приключенческие боевики'))),
           const SizedBox(height: 30),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return RPG();
-                    },
+          SizedBox(
+              width: 300,
+              height: 75,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal,
+                    onPrimary: Colors.white,
+                    onSurface: Colors.grey,
                   ),
-                );
-              },
-              child: Text('RPG')),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return RPG();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text('RPG'))),
         ],
       ),
     );
@@ -83,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final List<Gam> myProducts = [];
-    myProducts.add(Gam('GTA 5', 'gta.jpg'));
+    myProducts.add(Gam('Grand Theft Auto V', 'gta.jpg'));
     myProducts.add(Gam('little nightmares ii', 'littlenightmares21.jpg'));
     myProducts.add(Gam('Hello Neighbor', 'HelloNeighbor.jpg'));
     myProducts.add(Gam('ELDEN RING', 'ELDENRING.jpg'));
@@ -108,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisCount: 2, childAspectRatio: 7 / 5, mainAxisSpacing: 20),
           itemCount: myProducts.length,
           itemBuilder: (BuildContext context, int index) {
+            //Карта дизайна материала: панель со слегка закругленными углами и тенью возвышения.
             return Card(
               color: Colors.amberAccent,
               shape: RoundedRectangleBorder(
@@ -124,7 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     Text(
                       myProducts[index].name,
                       style: const TextStyle(
-                        fontSize: 26.0,
+                        fontSize: 28.0,
+                        color: Colors.black,
                         fontWeight: FontWeight.normal,
                       ),
                     )
